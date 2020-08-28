@@ -1,0 +1,52 @@
+
+curl -i -X POST \
+ -H "Content-Type:application/x-www-form-urlencoded" \
+ -d "grant_type=authorization_code" \
+ -d "client_id=7d4302fa68e625d9557d099996f6dac2448c9ff79f5989861ca991b71a5f71b7" \
+ -d "client_secret=803f4ce752a7ae469d44b74ab25a5a6a6940236a4ff8c3617ac79c207f086bf3" \
+ -d "code=${取得した認可コード}" \
+ -d "redirect=https://app.secure.freee.co.jp/developers/start_guides/applications/8173/token?company_id=2585177"
+ 'https://accounts.secure.freee.co.jp/public_api/token'
+
+
+GET https://api.freee.co.jp/api/companies?format=json
+
+
+GET https://api.freee.co.jp/api/1/account_items?company_id=2585177
+
+
+POST https://api.freee.co.jp/api/1/account_items  HTTP/1.1
+content-type: application/json
+Authorization: 82bfef913bce4a28ee24cfbd0b9b6885efc0774524172db1d5c5d29adc45e5f7
+
+{
+  "company_id": 1,
+  "account_item": {
+    "name": "新しい勘定科目",
+    "shortcut": "NEWACCOUNTITEM",
+    "shortcut_num": "999",
+    "tax_code": 1,
+    "group_name": "その他預金",
+    "account_category_id": 1,
+    "corresponding_income_id": 1,
+    "corresponding_expense_id": 1,
+    "accumulated_dep_account_item_id": 1,
+    "searchable": 2,
+    "items": [
+      {
+        "id": 1
+      }
+    ],
+    "partners": [
+      {
+        "id": 1
+      }
+    ]
+  }
+}
+
+
+
+# webアプリ認証用
+POST https://accounts.secure.freee.co.jp/public_api/authorize?client_id=517d7c0dffbe8a05caffb3a2ef00bc98b809cc7c0f7de873394d438f7dd510a6&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code
+POST https://accounts.secure.freee.co.jp/public_api/authorize?client_id=7d4302fa68e625d9557d099996f6dac2448c9ff79f5989861ca991b71a5f71b7&redirect_uri=https%3A%2F%2Fapp.secure.freee.co.jp%2Fdevelopers%2Fstart_guides%2Fapplications%2F8173%2Ftoken%3Fcompany_id%3D2585177&response_type=code
