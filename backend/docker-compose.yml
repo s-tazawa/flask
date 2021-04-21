@@ -1,0 +1,63 @@
+version: '3'
+services:
+
+  flask:
+    build: ./flask
+    container_name: flask
+    volumes:
+        - ./flask:/usr/src/app
+    ports:
+        - 5000:5000
+    depends_on:
+      - db
+    networks:
+      - flask_network
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - 8889:80
+    depends_on:
+      - flask
+    environment:
+      - TZ=Japan
+    restart: always
+    networks:
+      - flask_network
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/log:/var/log/nginx
+
+  db:
+    build: ./db
+    container_name: mysql
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+      - ./db/backup:/docker-entrypoint-initdb.d
+    env_file:
+      - ./db/conf.env
+    environment:
+      - "TZ=Japan"
+    restart: always
+    networks:
+      - flask_network
+
+  phpmyadmin:
+    build: ./phpmyadmin
+    container_name: phpmyadmin01
+    env_file:
+      - ./phpmyadmin/conf.env
+    depends_on:
+      - db
+    ports:
+      - 8888:80
+    networks:
+      - flask_network
+
+volumes:
+    db_data: {}
+
+networks:
+  flask_network:
+    driver: bridge

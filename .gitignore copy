@@ -1,0 +1,4 @@
+nginx/log/error.log
+nginx/log/access.log
+/test/*
+node_modules/*

@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Date: Fri, 28 Aug 2020 12:57:07 GMT
+Content-Type: application/json; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: close
+Status: 200 OK
+Cache-Control: no-cache, must-revalidate
+Referrer-Policy: strict-origin-when-cross-origin
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 1; mode=block
+X-Request-Id: fc7de98f-e6e6-46ca-8627-d47b63cf005e
+X-Download-Options: noopen
+ETag: W/"250f5a7e620e3dbbe59e1ab5dfbad5ff"
+X-Frame-Options: SAMEORIGIN
+X-Runtime: 0.134073
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+
+{"access_token":"23b2616554c3b94dc148deded0c09528d4bee2b7f83925179fe4c199f279888c","token_type":"bearer","expires_in":86399,"refresh_token":"4f634aab34f9f68a234489a91b304e148f67345b87f963dd31e757499d947e45","scope":"read write default_read","created_at":1598619427}

@@ -1,0 +1,61 @@
+
+curl -i -X POST \
+ -H "Content-Type:application/x-www-form-urlencoded" \
+ -d "grant_type=authorization_code" \
+ -d "client_id=4201365c185d38afef029cc55f21aa21757def89abd09b34716d4f1390272f63" \
+ -d "client_secret=753e6b179198dab550928a586450753a9fc8eb14b06c2330339d855f9a1d2aaf" \
+ -d "code=57651abc3182d55078171597ab9bdbacd571cc196e57e51e9cbf35af03bb0a97" \
+ -d "redirect_uri=urn:ietf:wg:oauth:2.0:oob" \
+ 'https://accounts.secure.freee.co.jp/public_api/token'
+
+POST https://accounts.secure.freee.co.jp/public_api/token  HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+{
+ "grant_type": "authorization_code",
+ "client_id": "4201365c185d38afef029cc55f21aa21757def89abd09b34716d4f1390272f63",
+ "client_secret": "753e6b179198dab550928a586450753a9fc8eb14b06c2330339d855f9a1d2aaf",
+ "code": "e8f4fc39df0d7c2fc37e21454fb6c45c083b7c2c4118384291b2a9726511a088",
+ "redirect": "https://app.secure.freee.co.jp/developers/start_guides/applications/8173/token?company_id=2585177"
+}
+
+
+
+GET https://api.freee.co.jp/api/companies?format=json
+content-type: application/json
+Authorization: 23b2616554c3b94dc148deded0c09528d4bee2b7f83925179fe4c199f279888c
+
+
+GET https://api.freee.co.jp/api/1/account_items?company_id=2585177
+
+
+POST https://api.freee.co.jp/api/1/account_items  HTTP/1.1
+content-type: application/json
+Authorization: 23b2616554c3b94dc148deded0c09528d4bee2b7f83925179fe4c199f279888c
+
+{
+  "company_id": 2585177,
+  "account_item": {
+    "name": "新しい勘定科目",
+    "shortcut": "NEWACCOUNTITEM",
+    "shortcut_num": "999",
+    "tax_code": 1,
+    "group_name": "その他預金",
+    "account_category_id": 1,
+    "corresponding_income_id": 1,
+    "corresponding_expense_id": 1,
+    "accumulated_dep_account_item_id": 1,
+    "searchable": 2,
+    "items": [
+      {
+        "id": 1
+      }
+    ],
+    "partners": [
+      {
+        "id": 1
+      }
+    ]
+  }
+}
+
