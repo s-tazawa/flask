@@ -22,7 +22,7 @@ phases:
       # - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/npm.list
       # - sudo apt-get update && sudo apt-get install npm
       - npm --version
-      - npm run test
+      # - npm test
   build:
     commands:
       - npm run build
