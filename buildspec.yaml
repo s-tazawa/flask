@@ -30,7 +30,7 @@ phases:
   post_build:
     commands:
       - aws s3 cp frontend.zip s3://flask-frontend
-artifacts:
-  type: zip
-  files: frontend.zip
+# artifacts:
+#   type: zip
+#   files: frontend.zip
     
