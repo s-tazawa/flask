@@ -15,11 +15,9 @@ phases:
       # - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
       # - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/npm.list
       # - sudo apt-get update && sudo apt-get install npm
-      - cd frontend
       - npm --version
   build:
     commands:
-      - cd frontend
       - npm build
   post_build:
     commands:
