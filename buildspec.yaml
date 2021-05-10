@@ -1,0 +1,28 @@
+# buildspec.yml
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - cd frontend
+      - npm install
+      - npm install -g forever
+  pre_build:
+    commands:
+      # - sudo apt-get update && sudo apt-get install apt-transport-https
+      # - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      # - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/npm.list
+      # - sudo apt-get update && sudo apt-get install npm
+      - cd frontend
+      - npm --version
+  build:
+    commands:
+      - cd frontend
+      - npm build
+  post_build:
+    commands:
+      - aws s3 sync release s3://flask-frontend --delete --acl public-read 
+
+      
