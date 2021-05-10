@@ -6,6 +6,12 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
+      # AWSCLIのインストール
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip
+      - ls -l /root/.pyenv/shims/aws
+      - ./aws/install --bin-dir /root/.pyenv/shims --install-dir /usr/local/aws-cli --update
+      # npmのインストール
       - cd frontend
       - npm install
       - npm install -g forever
@@ -16,11 +22,12 @@ phases:
       # - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/npm.list
       # - sudo apt-get update && sudo apt-get install npm
       - npm --version
+      - npm run test
   build:
     commands:
-      - npm build
-  # post_build:
-  #   commands:
-  #     - aws s3 sync release s3://flask-frontend --delete --acl public-read 
+      - npm run build
+  post_build:
+    commands:
+      - aws s3 sync release s3://flask-frontend --delete --acl public-read 
 
       
