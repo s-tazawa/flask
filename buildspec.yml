@@ -39,7 +39,7 @@ phases:
   post_build:
     commands:
       - cd -
-      - zip frontend.zip *.js *.json -r frontend/node_modules appspec.yml -q
+      - zip frontend.zip *.js *.json -r frontend/node_modules scripts appspec.yml -q
       - aws s3 cp frontend.zip s3://flask-frontend
 # artifacts:
 #   type: zip
