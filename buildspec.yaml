@@ -11,6 +11,14 @@ phases:
       - unzip awscliv2.zip
       - ls -l /root/.pyenv/shims/aws
       - ./aws/install --bin-dir /root/.pyenv/shims --install-dir /usr/local/aws-cli --update
+      # Cloudwatch agentのインストール
+      #
+      - yum -y install ruby
+      - yum -y install wget
+      - cd /home/ec2-user
+      - wget https://aws-codedeploy-ap-northeast-1.s3.amazonaws.com/latest/install; 
+      - chmod +x ./install; sudo ./install auto
+      - cd -
       # npmのインストール
       - cd frontend
       - npm install
