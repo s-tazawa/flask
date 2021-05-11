@@ -2,4 +2,6 @@
 # mkdir -p /usr/src/app
 # RUN pip install -r requirements.txt
 # gunicorn startup:app -b :5000 --reload
+# sudo systemctl start uwsgi
+# sudo systemctl start nginx
 npm run start 
