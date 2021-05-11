@@ -12,14 +12,14 @@ phases:
       - unzip awscliv2.zip
       - ls -l /root/.pyenv/shims/aws
       - ./aws/install --bin-dir /root/.pyenv/shims --install-dir /usr/local/aws-cli --update
-      # Cloudwatch Agentのインストール
-      - yum install amazon-cloudwatch-agent
-      # CodeDeploy Agentのインストール
-      - yum -y install ruby
-      - yum -y install wget
-      - wget https://aws-codedeploy-ap-northeast-1.s3.amazonaws.com/latest/install; 
-      - chmod +x ./install
-      - ./install auto
+      # # Cloudwatch Agentのインストール
+      # - yum install amazon-cloudwatch-agent
+      # # CodeDeploy Agentのインストール
+      # - yum -y install ruby
+      # - yum -y install wget
+      # - wget https://aws-codedeploy-ap-northeast-1.s3.amazonaws.com/latest/install; 
+      # - chmod +x ./install
+      # - ./install auto
       # npmのインストール
       - cd frontend
       - npm install
@@ -35,9 +35,10 @@ phases:
   build:
     commands:
       - npm run build
-      - zip frontend.zip *.js *.json -r node_modules -q
+      
   post_build:
     commands:
+      - zip -j frontend.zip *.js *.json -r node_modules -q
       - aws s3 cp frontend.zip s3://flask-frontend
 # artifacts:
 #   type: zip
