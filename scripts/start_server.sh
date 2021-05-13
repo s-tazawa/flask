@@ -4,5 +4,5 @@
 # gunicorn startup:app -b :5000 --reload
 # sudo systemctl start uwsgi
 # sudo systemctl start nginx
-cd frontend
+cd ../frontend
 npm run start 
